@@ -1,0 +1,20 @@
+{
+  "name": "adventuregame",
+  "version": "0.0.1",
+  "description": "This is my game.",
+  "main": "index.js",
+  "scripts": {
+    "webbuild": "cd ag-webshell && yarn build",
+    "nativebuild": "cd ag-nativeshell && yarn build",
+    "toWeb": "node convertToWeb.js",
+    "toNative": "node convertToNative.js",
+    "n-build" : "cd ag-nativeshell && yarn build",
+    "n-start" : "cd ag-nativeshell && yarn start",
+    "native" : "cd ag-nativeshell && yarn build && yarn start"
+  },
+  "author": "Daniel Stephenson",
+  "license": "MIT",
+  "dependencies": {
+    "replace-in-file": "^3.0.0-beta.2"
+  }
+}
