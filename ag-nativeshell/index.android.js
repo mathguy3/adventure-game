@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
 	AppRegistry,
@@ -12,7 +6,7 @@ import {
 	View,
 	ToastAndroid
 } from 'react-native';
-import ButtonCore from './src/components/Shared'
+import ButtonCore from './src/components/ButtonCore'
 
 export default class nativeshell extends Component {
 	handleButtonTap = () => {

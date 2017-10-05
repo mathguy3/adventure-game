@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import ButtonCore from "./components/ButtonCore";
+import styles from "./styles.js";
 
 class App extends Component {
-	handleButtonTap = () => {
-
-	}
-	render() {
-		return (
-			<div className="App">
-				<ButtonCore />
-			</div>
-		);
-	}
+  handleButtonTap = () => {
+    alert("A pikachu appeared nearby !");
+  };
+  render() {
+    return (
+      <div style={styles.container}>
+        <ButtonCore onClick={this.handleButtonTap} title={"hi there"} />
+      </div>
+    );
+  }
 }
 
 export default App;
