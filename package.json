@@ -1,25 +1,31 @@
 {
-  "name": "adventuregame",
-  "version": "0.0.1",
-  "description": "This is my game.",
-  "main": "index.js",
-  "scripts": {
-    "copyToWeb": "",
-    "copyToNative": "",
-    "toWeb": "node convertToWeb.js",
-    "toNative": "node convertToNative.js",
-    "n-build": "cd ag-nativeshell && yarn build",
-    "n-start": "cd ag-nativeshell && yarn start",
-    "w-build": "cd ag-webshell && yarn build",
-    "w-start": "cd ag-webshell && yarn start",
-    "native": "cd ag-nativeshell && yarn build && yarn start",
-    "convert": "node convert",
-    "buildall": "",
-    "startall": "yarn convert web"
-  },
-  "author": "Daniel Stephenson",
-  "license": "MIT",
-  "dependencies": {
-    "replace-in-file": "^3.0.0-beta.2"
-  }
+	"name": "adventuregame",
+	"version": "0.0.1",
+	"description": "This is my game.",
+	"main": "index.js",
+	"scripts": {
+		"rimrafgen": "rimraf ./ag-webshell/src/gen && rimraf ./ag-nativeshell/src/gen",
+		"mkgen": "mkdir .\\ag-webshell\\src\\gen && mkdir .\\ag-nativeshell\\src\\gen",
+		"cleangen": "yarn rimrafgen && yarn mkgen",
+		"cvtweb": "node convert web",
+		"cvtnative": "node convert native",
+		"buildweb": "yarn cvtweb && cp -r ./src/gen ./ag-webshell/src",
+		"buildnative": "yarn cvtnative && cp -r ./src/gen ./ag-nativeshell/src",
+		"startnative": "cd ag-nativeshell && react-native run-android",
+		"startweb": "cd ag-webshell && yarn build && yarn start",
+		"native": "yarn buildnative && yarn startnative",
+		"web": "yarn buildweb && yarn startweb",
+		"buildall": "yarn cleangen && yarn buildweb && yarn buildnative",
+		"startall": "concurrently \"yarn startnative\" \"yarn startweb\"",
+		"all": "yarn buildall && yarn startall"
+	},
+	"author": "Daniel Stephenson",
+	"license": "MIT",
+	"dependencies": {
+		"replace-in-file": "^3.0.0-beta.2"
+	},
+	"devDependencies": {
+		"concurrently": "^3.5.0",
+		"rimraf": "^2.6.2"
+	}
 }
